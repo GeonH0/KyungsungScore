@@ -1,0 +1,6 @@
+framework module Pods_KyungSungScoreTests {
+  umbrella header "Pods-KyungSungScoreTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
