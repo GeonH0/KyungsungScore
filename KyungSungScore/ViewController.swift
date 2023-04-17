@@ -66,6 +66,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         mayjorPickerView.reloadComponent(1)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? resultViewController{
+            let sc = Double(self.score.text!)
+            if sc! < 2.0{
+                viewController.result = "합격"
+            }
+            else{
+                viewController.result = "불합격"
+            }
+            
+        }
+            
+    }
+    
     
     @IBAction func tapScoreButton(_ sender: UIButton) {
         
