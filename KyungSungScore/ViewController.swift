@@ -15,6 +15,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     @IBOutlet weak var score: UITextField!
     
+    @IBOutlet weak var typeControl: UISegmentedControl!
+    
     @IBOutlet weak var mayjorPickerView: UIPickerView!
     @IBOutlet weak var showMajor: UITextField!
     
@@ -22,6 +24,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBOutlet weak var scoreButton: UIButton!
     
+    var mscore : Double = 0.0
     
     
     override func viewDidLoad() {
@@ -30,6 +33,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         mayjorPickerView.delegate = self
         // Do any additional setup after loading the view.
     }
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
@@ -63,17 +67,30 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let mayjorIdx = mayjorPickerView.selectedRow(inComponent: 1)
         let selectedMayjor = mayjor.mayjors[collegeIdx].mayjor[mayjorIdx]
         
+        if self.typeControl.selectedSegmentIndex == 0{
+            mscore =  mayjor.mayjors[collegeIdx].schoolScore[mayjorIdx]
+        }
+        else{
+            mscore = mayjor.mayjors[collegeIdx].satScore[mayjorIdx]
+        }
+        
+        
+//        self.resultLabel.sizeToFit()
+//        resultLabel.text = "\(selectedColleage),\(selectedMayjor)"
+        
         mayjorPickerView.reloadComponent(1)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? resultViewController{
+            
             let sc = Double(self.score.text!)
-            if sc! < 2.0{
-                viewController.result = "합격"
+            if sc! < mscore {
+                viewController.result = "합격입니다"
+                
             }
             else{
-                viewController.result = "불합격"
+                viewController.result = "불합격입니다."
             }
             
         }

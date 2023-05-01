@@ -176,11 +176,12 @@
                         <outlet property="mayjorPickerView" destination="iLH-B1-KN4" id="s1W-ek-1UT"/>
                         <outlet property="score" destination="kFG-6Z-umv" id="vtE-sG-F8i"/>
                         <outlet property="scoreButton" destination="HWu-pU-29o" id="9uS-9l-c6H"/>
+                        <outlet property="typeControl" destination="0vS-Lf-Pj4" id="41N-lA-7IH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="-979"/>
+            <point key="canvasLocation" x="1846.564885496183" y="-979.57746478873241"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="G9H-E0-2gr">
