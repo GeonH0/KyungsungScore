@@ -28,6 +28,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     var mscore : Double = 0.0
     
+    override func viewWillAppear(_ animated: Bool) {
+         super.viewWillAppear(animated)
+         self.navigationItem.hidesBackButton = true
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
