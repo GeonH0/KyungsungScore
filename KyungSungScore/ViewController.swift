@@ -24,6 +24,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBOutlet weak var scoreButton: UIButton!
     
+    
+    
     var mscore : Double = 0.0
     
     
