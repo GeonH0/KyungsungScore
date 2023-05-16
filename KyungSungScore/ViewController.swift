@@ -27,6 +27,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     
     var mscore : Double = 0.0
+    var idx : Int = 0
     
     override func viewWillAppear(_ animated: Bool) {
          super.viewWillAppear(animated)
@@ -72,13 +73,17 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let collegeIdx = mayjorPickerView.selectedRow(inComponent: 0)
         let selectedColleage = mayjor.mayjors[collegeIdx].college
         let mayjorIdx = mayjorPickerView.selectedRow(inComponent: 1)
-        let selectedMayjor = mayjor.mayjors[collegeIdx].mayjor[mayjorIdx]
+        let selectedMayjor = mayjor.mayjors[collegeIdx].mayjor[mayjorIdx]        
         
         if self.typeControl.selectedSegmentIndex == 0{
             mscore =  mayjor.mayjors[collegeIdx].schoolScore[mayjorIdx]
+            idx = collegeIdx+mayjorIdx
+            
         }
         else{
             mscore = mayjor.mayjors[collegeIdx].satScore[mayjorIdx]
+            idx = collegeIdx+mayjorIdx
+            
         }
         
         
@@ -93,11 +98,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             
             let sc = Double(self.score.text!)
             if sc! < mscore {
-                viewController.result = "합격입니다"
+                viewController.result = "합격입니다\(idx)"
                 
             }
             else{
-                viewController.result = "불합격입니다."
+                viewController.result = "불합격입니다.\(idx)"
             }
             
         }

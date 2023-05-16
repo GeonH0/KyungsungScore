@@ -8,6 +8,8 @@ target 'KyungSungScore' do
   # Pods for KyungSungScore
   pod 'Firebase/Auth'
 
+pod 'Firebase/Database'
+
   target 'KyungSungScoreTests' do
     inherit! :search_paths
     # Pods for testing
@@ -16,5 +18,6 @@ target 'KyungSungScore' do
   target 'KyungSungScoreUITests' do
     # Pods for testing
   end
+
 
 end
