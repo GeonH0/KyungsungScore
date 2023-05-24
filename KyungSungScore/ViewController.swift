@@ -97,6 +97,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if let viewController = segue.destination as? resultViewController{
             
             let sc = Double(self.score.text!)
+                    
             if sc! < mscore {
                 viewController.result = "합격입니다\(idx)"
                 
