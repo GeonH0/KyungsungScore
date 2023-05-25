@@ -77,7 +77,32 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         if self.typeControl.selectedSegmentIndex == 0{
             mscore =  mayjor.mayjors[collegeIdx].schoolScore[mayjorIdx]
-            idx = collegeIdx+mayjorIdx
+            if collegeIdx == 1{
+                idx = 6+mayjorIdx
+            }
+            if collegeIdx == 2{
+                idx = 6+mayjorIdx
+            }
+            if collegeIdx == 3{
+                idx = 6+mayjorIdx
+            }
+            if collegeIdx == 4{
+                idx = 6+mayjorIdx
+            }
+            if collegeIdx == 5{
+                idx = 6+mayjorIdx
+            }
+            if collegeIdx == 6{
+                idx = 6+mayjorIdx
+            }
+            if collegeIdx == 7{
+                idx = 6+mayjorIdx
+            }
+            if collegeIdx == 0{
+                idx = mayjorIdx
+            }
+                
+            
             
         }
         else{
@@ -92,19 +117,39 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         mayjorPickerView.reloadComponent(1)
     }
+    private func showalert(){
+        let alert = UIAlertController(title: "주의", message: "합격의 기준은 22년도 70%컷에 의존합니다.", preferredStyle: UIAlertController.Style.alert)
+        let OkAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default){
+            action in self.dismiss(animated: true,completion: nil)
+        }
+        
+        
+        
+        alert.addAction(OkAction)
+        
+        self.present(alert,animated: false)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? resultViewController{
             
             let sc = Double(self.score.text!)
-                    
-            if sc! < mscore {
-                viewController.result = "합격입니다\(idx)"
-                
+            
+            if sc == nil{
+                self.showalert()
             }
+            
             else{
-                viewController.result = "불합격입니다.\(idx)"
+                if sc! < mscore {
+                    viewController.result = "합격입니다\(idx)"
+                    
+                }
+                else{
+                    viewController.result = "불합격입니다.\(idx)"
+                }
             }
+                    
+            
             
         }
             

@@ -21,12 +21,21 @@ struct University{
     
 }
 
-struct Mayjor{
-    let college: String
+struct Mayjor  {
+    let college : String
     let mayjor : [String]
-    let schoolScore: [Double]
-    let satScore:[Double]
-    let interviewScore:[Double]
+    let schoolScore : [Double]
+    let satScore : [Double]
+    let interviewScore : [Double]
+}
+
+struct ScoreList : Codable{
+    let count : Int
+    let id : Int
+    let interviewScore: Int
+    let name : String
+    let satScore: String
+    let schoolScore: String
 }
 
 

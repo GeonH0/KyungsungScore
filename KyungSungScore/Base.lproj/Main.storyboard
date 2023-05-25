@@ -278,6 +278,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="SHx-Is-EMY"/>
                     <connections>
+                        <outlet property="collectionView" destination="nc5-cU-WLn" id="u2R-Eo-Rer"/>
                         <outlet property="resultLabel" destination="Kpk-cP-4Tq" id="9yT-ff-Pfp"/>
                     </connections>
                 </viewController>
