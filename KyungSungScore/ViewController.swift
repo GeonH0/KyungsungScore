@@ -6,8 +6,16 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
+    
+    var ref : DatabaseReference! //firebase realtime database
+    
+    var scoreList : [Score] = []
+    
+    
+
     
     
     
@@ -18,7 +26,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var typeControl: UISegmentedControl!
     
     @IBOutlet weak var mayjorPickerView: UIPickerView!
-    @IBOutlet weak var showMajor: UITextField!
+//    @IBOutlet weak var showMajor: UITextField!
     
 
     
@@ -28,6 +36,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     var mscore : Double = 0.0
     var idx : Int = 0
+    var sc : Double = 0.0
     
     override func viewWillAppear(_ animated: Bool) {
          super.viewWillAppear(animated)
@@ -39,8 +48,29 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         mayjorPickerView.dataSource = self
         mayjorPickerView.delegate = self
-        // Do any additional setup after loading the view.
-    }
+        
+        ref = Database.database().reference()
+        
+        ref.observe(.value) { snapshot in
+            guard let value = snapshot.value as? [String:Any] else { return}
+            
+            do{
+                let jsonData = try JSONSerialization.data(withJSONObject: value)
+                let scoreData = try JSONDecoder().decode([String:Score].self, from: jsonData)
+                let sList = Array(scoreData.values)
+                self.scoreList = sList
+                
+                print(sList)
+            } catch let error {
+                print("Error Json parsing\(error.localizedDescription)")
+            }
+        }
+  
+        
+
+        
+            }
+    
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -78,25 +108,25 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if self.typeControl.selectedSegmentIndex == 0{
             mscore =  mayjor.mayjors[collegeIdx].schoolScore[mayjorIdx]
             if collegeIdx == 1{
-                idx = 6+mayjorIdx
+                idx = 8+mayjorIdx
             }
             if collegeIdx == 2{
-                idx = 6+mayjorIdx
+                idx = 13+mayjorIdx
             }
             if collegeIdx == 3{
-                idx = 6+mayjorIdx
+                idx = 20+mayjorIdx
             }
             if collegeIdx == 4{
-                idx = 6+mayjorIdx
+                idx = 35+mayjorIdx
             }
             if collegeIdx == 5{
-                idx = 6+mayjorIdx
+                idx = 36+mayjorIdx
             }
             if collegeIdx == 6{
-                idx = 6+mayjorIdx
+                idx = 50+mayjorIdx
             }
             if collegeIdx == 7{
-                idx = 6+mayjorIdx
+                idx = 57+mayjorIdx
             }
             if collegeIdx == 0{
                 idx = mayjorIdx
@@ -118,7 +148,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         mayjorPickerView.reloadComponent(1)
     }
     private func showalert(){
-        let alert = UIAlertController(title: "주의", message: "합격의 기준은 22년도 70%컷에 의존합니다.", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "경고", message: "점수를 입력해 주세요", preferredStyle: UIAlertController.Style.alert)
         let OkAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default){
             action in self.dismiss(animated: true,completion: nil)
         }
@@ -131,33 +161,41 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? resultViewController{
-            
-            let sc = Double(self.score.text!)
-            
-            if sc == nil{
+        if let viewController = segue.destination as? resultViewController {
+            if let scoreText = self.score.text, let scoreValue = Double(scoreText) {
+                self.sc = scoreValue
+                
+                if sc < mscore {
+                    viewController.result = "합격입니다 \(idx)"
+                } else {
+                    viewController.result = "불합격입니다. \(idx)"
+                }
+                
+                ref.child("mayjor\(idx+1)/count").setValue(ServerValue.increment(1))
+                
+                if self.typeControl.selectedSegmentIndex == 0 {
+                    ref.child("mayjor\(idx+1)/schoolScore").setValue(ServerValue.increment(sc as NSNumber))
+                } else {
+                    ref.child("mayjor\(idx+1)/satScore").setValue(ServerValue.increment(sc as NSNumber))
+                }
+            } else {
                 self.showalert()
             }
-            
-            else{
-                if sc! < mscore {
-                    viewController.result = "합격입니다\(idx)"
-                    
-                }
-                else{
-                    viewController.result = "불합격입니다.\(idx)"
-                }
-            }
-                    
-            
-            
         }
-            
     }
+
+
     
     
     @IBAction func tapScoreButton(_ sender: UIButton) {
+
+
         
+    
+        
+        
+
+                               
         
         
     }

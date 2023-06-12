@@ -29,14 +29,15 @@ struct Mayjor  {
     let interviewScore : [Double]
 }
 
-struct ScoreList : Codable{
-    let count : Int
-    let id : Int
+struct Score: Codable {
+    let count: Int
+    let id: Int
     let interviewScore: Int
-    let name : String
-    let satScore: String
-    let schoolScore: String
+    let name: String
+    let satScore: Int
+    let schoolScore: Int
 }
+
 
 
 

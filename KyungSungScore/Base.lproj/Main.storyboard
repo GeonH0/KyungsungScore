@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -152,6 +151,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="입력"/>
                                         <connections>
+                                            <action selector="tapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1YN-Fm-7zk"/>
                                             <segue destination="rNQ-r0-u7Z" kind="show" id="MxY-T4-bVq"/>
                                         </connections>
                                     </button>
@@ -176,7 +176,7 @@
                     <connections>
                         <outlet property="mayjorPickerView" destination="iLH-B1-KN4" id="s1W-ek-1UT"/>
                         <outlet property="score" destination="kFG-6Z-umv" id="vtE-sG-F8i"/>
-                        <outlet property="scoreButton" destination="HWu-pU-29o" id="9uS-9l-c6H"/>
+                        <outlet property="scoreButton" destination="HWu-pU-29o" id="lkY-G7-Z2F"/>
                         <outlet property="typeControl" destination="0vS-Lf-Pj4" id="41N-lA-7IH"/>
                     </connections>
                 </viewController>
@@ -201,67 +201,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KyungsungIcon" translatesAutoresizingMaskIntoConstraints="NO" id="6MF-qv-Lf4">
                                 <rect key="frame" x="37.666666666666657" y="244.33333333333334" width="317.66666666666674" height="339.66666666666663"/>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nc5-cU-WLn">
-                                <rect key="frame" x="0.0" y="269" width="393" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="zpN-ji-NJa"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oQr-Yj-Dem">
-                                    <size key="itemSize" width="158" height="175"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="CDj-Lm-Ssm" customClass="ScoreCell" customModule="KyungSungScore" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="12.666666666666666" width="158" height="175"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="j6Y-W1-bYS">
-                                            <rect key="frame" x="0.0" y="0.0" width="158" height="175"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="JZ5-Ca-fTx">
-                                                    <rect key="frame" x="16" y="19" width="126.66666666666669" height="135.33333333333334"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학과: 인문문화학부" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktS-l1-m6g">
-                                                            <rect key="frame" x="0.0" y="0.0" width="126.66666666666667" height="20.333333333333332"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내신 점수: 0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfK-Fj-Qm6">
-                                                            <rect key="frame" x="0.0" y="38.333333333333336" width="126.66666666666667" height="20.333333333333336"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정시 점수:0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5a-H7-T2g">
-                                                            <rect key="frame" x="0.0" y="76.666666666666671" width="126.66666666666667" height="20.333333333333329"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지원자수:0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sP-99-mpH">
-                                                            <rect key="frame" x="0.0" y="115" width="126.66666666666667" height="20.333333333333343"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                        </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <size key="customSize" width="158" height="175"/>
-                                        <connections>
-                                            <outlet property="countLabel" destination="8sP-99-mpH" id="w96-Sc-gnc"/>
-                                            <outlet property="nameLabel" destination="ktS-l1-m6g" id="rAL-m7-CdU"/>
-                                            <outlet property="satscoreLabel" destination="q5a-H7-T2g" id="lqN-iL-eAV"/>
-                                            <outlet property="schoolscoreLabel" destination="xfK-Fj-Qm6" id="Q5C-dw-jjY"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FJ5-6s-CIr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -269,22 +208,33 @@
                             <constraint firstItem="6MF-qv-Lf4" firstAttribute="centerX" secondItem="FJ5-6s-CIr" secondAttribute="centerX" id="14I-oN-6dn"/>
                             <constraint firstItem="6MF-qv-Lf4" firstAttribute="centerY" secondItem="FJ5-6s-CIr" secondAttribute="centerY" id="EOP-Te-9Ht"/>
                             <constraint firstItem="Kpk-cP-4Tq" firstAttribute="leading" secondItem="FJ5-6s-CIr" secondAttribute="leading" constant="24" id="Nk9-rl-0TZ"/>
-                            <constraint firstItem="FJ5-6s-CIr" firstAttribute="bottom" secondItem="nc5-cU-WLn" secondAttribute="bottom" constant="300" id="P07-wz-VqB"/>
                             <constraint firstItem="FJ5-6s-CIr" firstAttribute="trailing" secondItem="Kpk-cP-4Tq" secondAttribute="trailing" constant="24" id="qdO-Ke-k4s"/>
                             <constraint firstItem="Kpk-cP-4Tq" firstAttribute="top" secondItem="FJ5-6s-CIr" secondAttribute="top" constant="50" id="r1x-8f-k5S"/>
-                            <constraint firstItem="nc5-cU-WLn" firstAttribute="trailing" secondItem="FJ5-6s-CIr" secondAttribute="trailing" id="v7c-Lo-sA8"/>
-                            <constraint firstItem="nc5-cU-WLn" firstAttribute="leading" secondItem="FJ5-6s-CIr" secondAttribute="leading" id="yHd-QH-G2V"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SHx-Is-EMY"/>
                     <connections>
-                        <outlet property="collectionView" destination="nc5-cU-WLn" id="u2R-Eo-Rer"/>
                         <outlet property="resultLabel" destination="Kpk-cP-4Tq" id="9yT-ff-Pfp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjJ-Af-E3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3246.5648854961833" y="-1100"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="snc-wi-Akw">
+            <objects>
+                <viewController id="hFp-uX-wcB" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4oO-JP-rPy">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jDh-2i-Glk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n6k-oW-YNs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4131" y="-1109"/>
         </scene>
     </scenes>
     <resources>
