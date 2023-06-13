@@ -149,7 +149,30 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         else{
             mscore = mayjor.mayjors[collegeIdx].satScore[mayjorIdx]
-            idx = collegeIdx+mayjorIdx
+            if collegeIdx == 1{
+                idx = 8+mayjorIdx
+            }
+            if collegeIdx == 2{
+                idx = 13+mayjorIdx
+            }
+            if collegeIdx == 3{
+                idx = 20+mayjorIdx
+            }
+            if collegeIdx == 4{
+                idx = 35+mayjorIdx
+            }
+            if collegeIdx == 5{
+                idx = 36+mayjorIdx
+            }
+            if collegeIdx == 6{
+                idx = 50+mayjorIdx
+            }
+            if collegeIdx == 7{
+                idx = 57+mayjorIdx
+            }
+            if collegeIdx == 0{
+                idx = mayjorIdx
+            }
             
         }
         
@@ -165,8 +188,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             action in self.dismiss(animated: true,completion: nil)
         }
         
-        
-        
+                
         alert.addAction(OkAction)
         
         self.present(alert,animated: false)
@@ -175,21 +197,30 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? resultViewController {
             if let scoreText = self.score.text, let scoreValue = Double(scoreText) {
+                
+             
                 self.sc = scoreValue
                 
-                if sc < mscore {
-                    viewController.result = "합격입니다"
-                } else {
-                    viewController.result = "불합격입니다."
-                }
+              
                 
                 ref.child("mayjor\(idx+1)/cnt").setValue(ServerValue.increment(1))
-                
                 if self.typeControl.selectedSegmentIndex == 0 {
                     ref.child("mayjor\(idx+1)/schoolScore").setValue(ServerValue.increment(sc as NSNumber))
+                    if sc < mscore {
+                        viewController.result = "합격입니다"
+                    } else {
+                        viewController.result = "불합격입니다."
+                    }
                 } else {
                     ref.child("mayjor\(idx+1)/satScore").setValue(ServerValue.increment(sc as NSNumber))
+                    if sc > mscore {
+                        viewController.result = "합격입니다"
+                    } else {
+                        viewController.result = "불합격입니다."
+                    }
                 }
+                
+             
                 
                 // 데이터를 성공적으로 처리하고 결과 화면을 표시하기 전에 필요한 데이터를 resultViewController로 전달할 수 있습니다.
             } else {
