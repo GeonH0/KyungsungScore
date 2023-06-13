@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseDatabase
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate  {
     
     var ref : DatabaseReference! //firebase realtime database
     
@@ -34,6 +34,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     
     
+    
     var mscore : Double = 0.0
     var idx : Int = 0
     var sc : Double = 0.0
@@ -48,28 +49,39 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         mayjorPickerView.dataSource = self
         mayjorPickerView.delegate = self
+        score.delegate = self
         
         ref = Database.database().reference()
         
-        ref.observe(.value) { snapshot in
-            guard let value = snapshot.value as? [String:Any] else { return}
+        ref.observeSingleEvent(of: .value) { snapshot in
+            guard let value = snapshot.value as? [String: Any] else { return }
             
-            do{
-                let jsonData = try JSONSerialization.data(withJSONObject: value)
-                let scoreData = try JSONDecoder().decode([String:Score].self, from: jsonData)
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: value, options: [])
+                let scoreData = try JSONDecoder().decode([String: Score].self, from: jsonData)
                 let sList = Array(scoreData.values)
                 self.scoreList = sList
                 
-                print(sList)
+                // prepare for segue
+                
+                
+                self.performSegue(withIdentifier: "resultViewController", sender: nil)
             } catch let error {
-                print("Error Json parsing\(error.localizedDescription)")
+                print("Error JSON parsing: \(error.localizedDescription)")
             }
         }
+
+
   
         
 
         
             }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            return true
+        }
     
     
     
@@ -166,23 +178,29 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 self.sc = scoreValue
                 
                 if sc < mscore {
-                    viewController.result = "합격입니다 \(idx)"
+                    viewController.result = "합격입니다"
                 } else {
-                    viewController.result = "불합격입니다. \(idx)"
+                    viewController.result = "불합격입니다."
                 }
                 
-                ref.child("mayjor\(idx+1)/count").setValue(ServerValue.increment(1))
+                ref.child("mayjor\(idx+1)/cnt").setValue(ServerValue.increment(1))
                 
                 if self.typeControl.selectedSegmentIndex == 0 {
                     ref.child("mayjor\(idx+1)/schoolScore").setValue(ServerValue.increment(sc as NSNumber))
                 } else {
                     ref.child("mayjor\(idx+1)/satScore").setValue(ServerValue.increment(sc as NSNumber))
                 }
+                
+                // 데이터를 성공적으로 처리하고 결과 화면을 표시하기 전에 필요한 데이터를 resultViewController로 전달할 수 있습니다.
             } else {
                 self.showalert()
             }
         }
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+        }
+
 
 
     
