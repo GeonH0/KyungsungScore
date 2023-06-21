@@ -87,6 +87,7 @@ class resultViewController: UIViewController, UICollectionViewDataSource, UIColl
         return cell
     }
 }
+
 extension resultViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.frame.width - 50) / 2 // 화면 너비에서 30을 빼고 2로 나눠 셀의 폭을 구함
