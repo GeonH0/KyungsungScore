@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Google LLC
+ * Copyright 2023 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
+#import "FirebaseAuth/Sources/Backend/RPC/Proto/TOTP/FIRAuthProtoFinalizeMFATOTPEnrollmentResponseInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol FIRAppCheckTokenResultInterop <NSObject>
+@implementation FIRAuthProtoFinalizeMFATOTPEnrollmentResponseInfo
 
-/// App Check token in the case of success or a dummy token in the case of a failure.
-/// In general, the value of the token should always be set to the request header.
-@property(nonatomic, readonly) NSString *token;
-
-/// A token fetch error in the case of a failure or `nil` in the case of success.
-@property(nonatomic, readonly, nullable) NSError *error;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+  if (self) {
+    self = [super init];
+  }
+  return self;
+}
 
 @end
 
