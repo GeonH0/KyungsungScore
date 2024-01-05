@@ -20,6 +20,7 @@
 		1D607FC22A3743210029B840 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D607FC12A3743210029B840 /* GoogleService-Info.plist */; };
 		1D607FC42A37F2AC0029B840 /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D607FC32A37F2AC0029B840 /* ScoreCell.swift */; };
 		1DDC26CB29E5B35B0055D8D0 /* resultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC26CA29E5B35B0055D8D0 /* resultViewController.swift */; };
+		1DE4FF822B4786EA00AD730F /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4FF812B4786EA00AD730F /* CellViewController.swift */; };
 		1DFB897A29E6E11200ED6521 /* mayjor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB897929E6E11200ED6521 /* mayjor.swift */; };
 		AF374F3912706E7E0CCD5B63 /* Pods_KyungSungScore_KyungSungScoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63D4A439ECEC8157C60F3214 /* Pods_KyungSungScore_KyungSungScoreUITests.framework */; };
 		DE6FAAEDA1911C48BEF5EFA6 /* Pods_KyungSungScore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2638FAE131A06F353D0AA56D /* Pods_KyungSungScore.framework */; };
@@ -62,6 +63,7 @@
 		1D607FC12A3743210029B840 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D607FC32A37F2AC0029B840 /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
 		1DDC26CA29E5B35B0055D8D0 /* resultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultViewController.swift; sourceTree = "<group>"; };
+		1DE4FF812B4786EA00AD730F /* CellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
 		1DFB897929E6E11200ED6521 /* mayjor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mayjor.swift; sourceTree = "<group>"; };
 		2638FAE131A06F353D0AA56D /* Pods_KyungSungScore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KyungSungScore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA257BFC8694236C5921EA4 /* Pods-KyungSungScore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KyungSungScore.release.xcconfig"; path = "Target Support Files/Pods-KyungSungScore/Pods-KyungSungScore.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				1D2024A929CAC3ED00194A18 /* ViewController.swift */,
 				1D2024AB29CAC3ED00194A18 /* Main.storyboard */,
 				1D2024AE29CAC3EE00194A18 /* Assets.xcassets */,
+				1DE4FF812B4786EA00AD730F /* CellViewController.swift */,
 				1D2024B029CAC3EE00194A18 /* LaunchScreen.storyboard */,
 				1D2024B329CAC3EE00194A18 /* Info.plist */,
 				1DDC26CA29E5B35B0055D8D0 /* resultViewController.swift */,
@@ -424,6 +427,7 @@
 			files = (
 				1D29BD1029E823D300CE73D4 /* LoginViewController.swift in Sources */,
 				1D2024AA29CAC3ED00194A18 /* ViewController.swift in Sources */,
+				1DE4FF822B4786EA00AD730F /* CellViewController.swift in Sources */,
 				1D2024A629CAC3ED00194A18 /* AppDelegate.swift in Sources */,
 				1D2024A829CAC3ED00194A18 /* SceneDelegate.swift in Sources */,
 				1D607FC42A37F2AC0029B840 /* ScoreCell.swift in Sources */,

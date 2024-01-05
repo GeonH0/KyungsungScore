@@ -82,10 +82,19 @@ class resultViewController: UIViewController, UICollectionViewDataSource, UIColl
         cell.nameLabel.text = "학과: \(score.name)"
         cell.schoolLabel.text = String(format: "평균내신점수: %.2f점", score.schoolScore / Double(score.cnt))
         cell.satLabel.text = String(format: "평균수능점수: %.2f점", score.satScore / Double(score.cnt))
-
-
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let cellViewController = storyboard.instantiateViewController(identifier: "CellViewController") as? CellViewController else { return }
+        
+        cellViewController.score = scoreList[indexPath.row]        
+        self.show(cellViewController,sender: nil)
+       
+       
+    }
+    
+    
 }
 
 extension resultViewController: UICollectionViewDelegateFlowLayout {
@@ -103,5 +112,6 @@ extension resultViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 10 // 가로 간격 설정
     }
+    
 }
 

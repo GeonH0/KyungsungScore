@@ -15,20 +15,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var scoreList : [Score] = []
     
     
-
-    
     
     
     var mayjor = University()
-
+    
     @IBOutlet weak var score: UITextField!
     
     @IBOutlet weak var typeControl: UISegmentedControl!
     
     @IBOutlet weak var mayjorPickerView: UIPickerView!
-//    @IBOutlet weak var showMajor: UITextField!
+    //    @IBOutlet weak var showMajor: UITextField!
     
-
+    
     
     @IBOutlet weak var scoreButton: UIButton!
     
@@ -40,8 +38,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var sc : Double = 0.0
     
     override func viewWillAppear(_ animated: Bool) {
-         super.viewWillAppear(animated)
-         self.navigationItem.hidesBackButton = true
+        super.viewWillAppear(animated)
+        self.navigationItem.hidesBackButton = true
     }
     
     
@@ -70,18 +68,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 print("Error JSON parsing: \(error.localizedDescription)")
             }
         }
-
-
-  
         
-
         
-            }
+        
+        
+        
+        
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            return true
-        }
+        textField.resignFirstResponder()
+        return true
+    }
     
     
     
@@ -115,7 +113,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let collegeIdx = mayjorPickerView.selectedRow(inComponent: 0)
         let selectedColleage = mayjor.mayjors[collegeIdx].college
         let mayjorIdx = mayjorPickerView.selectedRow(inComponent: 1)
-        let selectedMayjor = mayjor.mayjors[collegeIdx].mayjor[mayjorIdx]        
+        let selectedMayjor = mayjor.mayjors[collegeIdx].mayjor[mayjorIdx]
         
         if self.typeControl.selectedSegmentIndex == 0{
             mscore =  mayjor.mayjors[collegeIdx].schoolScore[mayjorIdx]
@@ -143,7 +141,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if collegeIdx == 0{
                 idx = mayjorIdx
             }
-                
+            
             
             
         }
@@ -177,8 +175,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         
         
-//        self.resultLabel.sizeToFit()
-//        resultLabel.text = "\(selectedColleage),\(selectedMayjor)"
+        //        self.resultLabel.sizeToFit()
+        //        resultLabel.text = "\(selectedColleage),\(selectedMayjor)"
         
         mayjorPickerView.reloadComponent(1)
     }
@@ -188,7 +186,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             action in self.dismiss(animated: true,completion: nil)
         }
         
-                
+        
         alert.addAction(OkAction)
         
         self.present(alert,animated: false)
@@ -198,10 +196,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if let viewController = segue.destination as? resultViewController {
             if let scoreText = self.score.text, let scoreValue = Double(scoreText) {
                 
-             
+                
                 self.sc = scoreValue
                 
-              
+                
                 
                 ref.child("mayjor\(idx+1)/cnt").setValue(ServerValue.increment(1))
                 if self.typeControl.selectedSegmentIndex == 0 {
@@ -220,7 +218,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     }
                 }
                 
-             
+                
                 
                 // 데이터를 성공적으로 처리하고 결과 화면을 표시하기 전에 필요한 데이터를 resultViewController로 전달할 수 있습니다.
             } else {
@@ -229,22 +227,22 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            self.view.endEditing(true)
-        }
-
-
-
+        self.view.endEditing(true)
+    }
+    
+    
+    
     
     
     @IBAction func tapScoreButton(_ sender: UIButton) {
-
-
-        
-    
         
         
-
-                               
+        
+        
+        
+        
+        
+        
         
         
     }
