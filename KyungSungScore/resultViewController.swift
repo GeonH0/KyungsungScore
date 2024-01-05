@@ -86,9 +86,9 @@ class resultViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let cellViewController = storyboard.instantiateViewController(identifier: "CellViewController") as? CellViewController else { return }
+        guard let cellViewController = storyboard.instantiateViewController(identifier: "CellDetailViewController") as? CellDetailViewController else { return }
         
-        cellViewController.score = scoreList[indexPath.row]        
+        cellViewController.score = scoreList[indexPath.row]
         self.show(cellViewController,sender: nil)
        
        

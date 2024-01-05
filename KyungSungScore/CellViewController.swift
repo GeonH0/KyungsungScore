@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CellViewController: UIViewController {
+class CellDetailViewController: UIViewController {
     var score: resultViewController.Score?
 
     override func viewDidLoad() {

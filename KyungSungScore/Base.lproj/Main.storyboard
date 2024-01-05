@@ -290,10 +290,10 @@
             </objects>
             <point key="canvasLocation" x="3246.5648854961833" y="-1100"/>
         </scene>
-        <!--Cell View Controller-->
+        <!--Cell Detail View Controller-->
         <scene sceneID="7vE-Sg-nut">
             <objects>
-                <viewController storyboardIdentifier="CellViewController" id="8Ju-uY-vMB" customClass="CellViewController" customModule="KyungSungScore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CellDetailViewController" id="8Ju-uY-vMB" customClass="CellDetailViewController" customModule="KyungSungScore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Iv-tF-P3l">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
