@@ -19,6 +19,9 @@ class LoginViewController : UIViewController{
     @IBOutlet weak var LoginButton: UIButton!
     @IBOutlet weak var PasswordTextField: UITextField!
     
+    private var isAlertPresented = false // 알림이 표시 중인지 추적하는 플래그
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +52,6 @@ class LoginViewController : UIViewController{
                 let code = (error as NSError).code
                 switch code{
                 case 17007: // 이미 가입한 계정일때
-                    
                     self.loginUser(withEmail: email, password: password)
                     //로그인 하기
                     
@@ -61,7 +63,6 @@ class LoginViewController : UIViewController{
             }else
             {
                 showalert()
-//                showViewController()
             }
         }
         
@@ -74,20 +75,25 @@ class LoginViewController : UIViewController{
         navigationController?.show(mainViewController, sender: nil)
     }
     
-    private func showalert(){
-        let alert = UIAlertController(title: "주의", message: "합격의 기준은 22년도 70%컷에 의존합니다.", preferredStyle: UIAlertController.Style.alert)
-        let OkAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default){
-            action in self.showViewController()
+    private func showalert() {
+        if isAlertPresented {
+            return
         }
-        
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel){
-            action in self.dismiss(animated: true,completion: nil)
+        isAlertPresented.toggle() // 알림이 표시될 때 플래그 전환
+        let alert = UIAlertController(title: "주의", message: "합격의 기준은 22년도 70%컷에 의존합니다.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) { [weak self] action in
+            self?.showViewController()
+            self?.isAlertPresented.toggle() // 알림이 닫힐 때 플래그 전환
         }
-        
-        alert.addAction(OkAction)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { [weak self] action in
+            self?.dismiss(animated: true, completion: nil)
+            self?.isAlertPresented.toggle() // 알림이 닫힐 때 플래그 전환
+        }
+
+        alert.addAction(okAction)
         alert.addAction(cancelAction)
-        
-        self.present(alert,animated: false)
+
+        self.present(alert, animated: false)
     }
     
     
