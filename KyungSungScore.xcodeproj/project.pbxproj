@@ -169,13 +169,37 @@
 		1D7347FB2B52DD8300FADAEF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1D29BD0F29E823D300CE73D4 /* LoginViewController.swift */,
-				1DDC26CA29E5B35B0055D8D0 /* resultViewController.swift */,
-				1D2024A929CAC3ED00194A18 /* ViewController.swift */,
-				1DE4FF812B4786EA00AD730F /* CellDetailViewController.swift */,
-				1D607FC32A37F2AC0029B840 /* ScoreCell.swift */,
+				1D7347FE2B52DEF200FADAEF /* Select */,
+				1D7347FD2B52DEE600FADAEF /* Result */,
+				1D7347FC2B52DEDD00FADAEF /* Login */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1D7347FC2B52DEDD00FADAEF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1D29BD0F29E823D300CE73D4 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1D7347FD2B52DEE600FADAEF /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				1DDC26CA29E5B35B0055D8D0 /* resultViewController.swift */,
+				1D607FC32A37F2AC0029B840 /* ScoreCell.swift */,
+				1DE4FF812B4786EA00AD730F /* CellDetailViewController.swift */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		1D7347FE2B52DEF200FADAEF /* Select */ = {
+			isa = PBXGroup;
+			children = (
+				1D2024A929CAC3ED00194A18 /* ViewController.swift */,
+			);
+			path = Select;
 			sourceTree = "<group>";
 		};
 		82A91E9B5E1FA54AF4FFECC7 /* Frameworks */ = {
